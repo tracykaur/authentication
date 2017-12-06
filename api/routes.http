@@ -3,7 +3,8 @@ GET http://localhost:7000/wrong_url
 ---
 # Test products
 GET http://localhost:7000/products
---
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNjb3R0c0BnbWFpaWlsLmNvbSIsImlhdCI6MTUxMjUzNDY0OSwiZXhwIjoxNTEyNTU2MjQ5LCJzdWIiOiI1YTI3NmZiNGU4YzQ5NDFkODY4YWZhYTMifQ.3O6kdzNWpXsrrXLq_290fUCZQa9MJKU4mX0CrmbqQXs
+---
 #Test register
 POST http://localhost:7000/auth/register
 Content-Type: application/json
@@ -11,6 +12,24 @@ Content-Type: application/json
 {
   "firstName": "Scott",
   "lastName": "Dixon",
-  "email": "scott@gmaiiil.com",
+  "email": "scottsss@gmaiiil.com",
   "password": "edison123"
+}
+---
+#Test good login
+POST http://localhost:7000/auth
+Content-Type: application/json
+
+{
+  "email": "scotts@gmaiiil.com",
+  "password": "edison123"
+}
+---
+#Test bad login
+POST http://localhost:7000/auth
+Content-Type: application/json
+
+{
+  "email": "scotts@gmaiiil.com",
+  "password": "dog"
 }
