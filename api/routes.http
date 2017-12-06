@@ -1,0 +1,3 @@
+# Test the 404
+GET http://localhost:7000/wrong_url
+---
