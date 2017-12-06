@@ -11,6 +11,17 @@ const app = express()
 // Plugins
 app.use(bodyParser.json()) // Allows me to have JSON uploads (POST/PUT)
 
+// JSON error handling
+app.use((error, req, res, next) => {
+  res.send({ error: error.message })
+})
+app.use((req, res, next) => {
+  // No other routes left, must be a 404!
+  res.status(404).send({
+    error: `No route found for ${req.method} ${req.url}`
+  })
+})
+
 // Routes
 app.listen(7000, (error) => {
   if (error) {
