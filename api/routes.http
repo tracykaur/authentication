@@ -1,3 +1,5 @@
 # Test the 404
 GET http://localhost:7000/wrong_url
 ---
+# Test products
+GET http://localhost:7000/products
