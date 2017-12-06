@@ -3,3 +3,14 @@ GET http://localhost:7000/wrong_url
 ---
 # Test products
 GET http://localhost:7000/products
+--
+#Test register
+POST http://localhost:7000/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "Scott",
+  "lastName": "Dixon",
+  "email": "scott@gmaiiil.com",
+  "password": "edison123"
+}

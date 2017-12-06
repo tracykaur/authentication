@@ -5,15 +5,18 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const { initialize } = require('./middleware/auth')
 
 const app = express()
 
 // Plugins
 app.use(bodyParser.json()) // Allows me to have JSON uploads (POST/PUT)
+app.use(initialize)
 
 // Routes
 app.use([
-  require('./routes/products')
+  require('./routes/products'),
+  require('./routes/auth')
 ])
 
 // JSON error handling
