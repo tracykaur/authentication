@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const { initialize } = require('./middleware/auth');
+const { initialize, requireJWT, verifyAdmin } = require('./middleware/auth');
 
 const app = express();
 
@@ -15,6 +15,10 @@ app.use(initialize);
 
 // Routes
 app.use([require('./routes/products'), require('./routes/auth')]);
+
+app.get('/admin', requireJWT, verifyAdmin, (req, res) => {
+  res.status(200).send('hello admin');
+});
 
 // JSON error handling
 app.use((error, req, res, next) => {
